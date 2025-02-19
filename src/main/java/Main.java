@@ -1,14 +1,15 @@
 import java.util.Scanner;
 
 public class Main {
-	
+	//Conversion rates in relation to dollar
+	static float dollar = 1f;
+	static float real = 5.5f;
+	static float euro = 1.2f;
+	static float yen = 100.00f;
+			
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		//Conversion rates in relation to dollar
-		float dollar = 1f;
-		float real = 5.5f;
-		float euro = 1.2f;
-		float yen = 100.00f;
+		
 		
 		System.out.println("---------Currency Converter---------");
 		System.out.println("List of Available Currencies: 1 - Dollar, 2 - Real, 3 - Euro, 4 - Yen, 5 - Other");
@@ -35,15 +36,15 @@ public class Main {
 		}
 		
 		System.out.println();
-		System.out.println("That sure is some data you just entered");
+		System.out.println("Your value is worth: " + result);
 	}
 	
 	public static String showCurrency(int currency) {
 		String result = "";
 		switch (currency) {
-		case 1: result = "Real";
+		case 1: result = "Dollar";
 				break;
-		case 2: result = "Dollar";
+		case 2: result = "Real";
 				break;
 		case 3: result = "Euro";
 				break;
@@ -58,13 +59,39 @@ public class Main {
 	
 	public static float convertToDollar(int currency, float value) {
 		float result = 1;
-		//converts value from currency to dollar
+		float conversion = 1;
+		switch (currency) {
+		case 1: conversion = dollar;
+				break;
+		case 2: conversion = real;
+				break;
+		case 3: conversion = euro;
+				break;
+		case 4: conversion = yen;
+				break;
+		default: System.out.println("We don't do monopoly money, sorry");
+				break;
+		}
+		result = value/conversion;
 		return result;
 	}
 	
 	public static float convertFromDollar(int currency, float value) {
 		float result = 1;
-		//converts value from dollar to currency
+		float conversion = 1;
+		switch (currency) {
+		case 1: conversion = dollar;
+				break;
+		case 2: conversion = real;
+				break;
+		case 3: conversion = euro;
+				break;
+		case 4: conversion = yen;
+				break;
+		default: System.out.println("We don't do monopoly money, sorry");
+				break;
+		}
+		result = conversion*value;
 		return result;
 	}
 }
