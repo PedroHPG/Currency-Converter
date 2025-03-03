@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 import org.jsoup.*; 
 import org.jsoup.nodes.*; 
@@ -13,6 +14,17 @@ public class Main {
 			
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		// initializing the HTML Document page variable 
+		Document doc; 
+		 
+		try { 
+			// fetching the target website 
+			doc = Jsoup.connect("https://www.exchange-rates.org/current-rates/usd").userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36") 
+					.header("Accept-Language", "*").get(); 
+		} catch (IOException e) { 
+			throw new RuntimeException(e); 
+		}
+
 		
 		
 		System.out.println("---------Currency Converter---------");
