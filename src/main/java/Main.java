@@ -26,9 +26,9 @@ public class Main {
 		//System.out.println("---------Currency Converter---------");
 		//System.out.println("List of Available Currencies: 1 - Dollar, 2 - Real, 3 - Euro, 4 - Yen, 5 - Other");
 		//System.out.print("Enter the currency you have: ");
-		Elements tests = doc.select("a[href*=https://www.exchange-rates.org/converter/usd-bsd]");
+		Elements tests = doc.select("a[href*=/converter/usd-bsd]");
 		for(Element test : tests) {
-			System.out.println(test.attr("title"));
+			System.out.println(test.text());
 		}
 		//int selector = sc.nextInt();
 		//Currency currency1 = selectCurrency(selector);
