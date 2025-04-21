@@ -2,13 +2,13 @@ import java.io.IOException;
 import java.util.Scanner;
 import org.jsoup.*; 
 import org.jsoup.nodes.*; 
-import org.jsoup.select.*;
+//import org.jsoup.select.*;
 
 
 public class Main {
-			
+	static Scanner sc = new Scanner(System.in);
+
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
 				
 		
 		System.out.println("---------Currency Converter---------");
@@ -73,7 +73,13 @@ public class Main {
 			Currency yen = new Currency("Yen", "JPY", rate);
 			return yen;
 		default:
-			Currency currency = new Currency();
+			sc.nextLine();
+			System.out.println("Enter the name of your currency:");
+			String name = sc.nextLine();
+			System.out.println("Enter the currency code for your currency:");
+			String code = sc.nextLine().toLowerCase();
+			rate = Float.parseFloat(doc.select("div.current-rates a[href*=/converter/usd-" + code + "]").first().text());
+			Currency currency = new Currency(name, code.toUpperCase(), rate);
 			return currency;
 		}
 	}
